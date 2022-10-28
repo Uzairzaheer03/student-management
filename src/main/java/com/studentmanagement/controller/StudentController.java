@@ -4,15 +4,17 @@ import com.studentmanagement.domain.Student;
 import com.studentmanagement.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-
-
 @RestController
+@Validated
 public class StudentController{
     @Autowired
     private StudentService studentService;
@@ -30,7 +32,10 @@ public class StudentController{
         );
     }
     @PostMapping("/create")
-    public String create(@RequestParam String name, @RequestParam String email, @RequestParam String phone, @RequestParam String city){
+    public String create(@Valid @NotEmpty @RequestParam(required = false) String name,
+                         @Valid @NotEmpty @RequestParam(required = false) String email,
+                         @Valid@NotEmpty @RequestParam(required = false) String phone,
+                         @Valid @NotEmpty@RequestParam(required = false) String city){
         return studentService.createStudent(name,email,phone,city);
     }
 
