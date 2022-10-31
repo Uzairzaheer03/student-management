@@ -22,5 +22,8 @@ public class StudentDto {
         this.phone = phone;
         this.city = city;
     }
+    public StudentDto() {
 
+    }
+    
 }
