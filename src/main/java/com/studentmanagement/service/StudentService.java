@@ -1,7 +1,9 @@
 package com.studentmanagement.service;
 
 import com.studentmanagement.domain.Student;
+import com.studentmanagement.dto.StudentDto;
 import com.studentmanagement.repository.StudentRepository;
+import org.springframework.context.annotation.EnableMBeanExport;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -14,15 +16,14 @@ import java.util.Optional;
 @Service
 public class StudentService {
        private final StudentRepository studentRepository;
-       private StudentService studentRepoitory;
 
 
        public StudentService(StudentRepository studentRepository){
               this.studentRepository = studentRepository;
        }
 
-       public String createStudent(String name, String email, String phone, String city){
-              Student student = new Student(name,email,phone,city);
+       public String createStudent(StudentDto studentDto){
+              Student student = new Student(studentDto.getName(),studentDto.getEmail(),studentDto.getPhone(),studentDto.getCity());
               studentRepository.save(student);
               return " saved student";
        }
@@ -32,16 +33,17 @@ public class StudentService {
               return studentRepository.findById(id);
        }
 
-       public String updatedStudent(int id, String name, String email, String phone, String city) {
+       public String updatedStudent(int id, StudentDto studentDto) {
 
-              Optional<Student> optionalStudent= getStudent(id);
-              optionalStudent.get().setName(name);
-              optionalStudent.get().setEmail(email);
-              optionalStudent.get().setPhone(phone);
-              optionalStudent.get().setCity(city);
-              studentRepository.save(optionalStudent.get());
+              Optional<Student> student= getStudent(id);
+              studentDto.getName();
+              studentDto.getEmail();
+              studentDto.getPhone();
+              studentDto.getCity();
+              studentRepository.save(student.get());
               return " update student ";
        }
+
 
        public String deleteStudent(int id) {
               studentRepository.deleteById(id);
@@ -65,6 +67,7 @@ public class StudentService {
 
               return pageStudent;
        }
+
 
 
 }
