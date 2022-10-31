@@ -33,14 +33,14 @@ public class StudentService {
               return studentRepository.findById(id);
        }
 
-       public String updatedStudent(int id, StudentDto studentDto) {
+       public String updatedStudent(int id, StudentDto studentDto ) {
 
-              Optional<Student> student= getStudent(id);
-              studentDto.getName();
-              studentDto.getEmail();
-              studentDto.getPhone();
-              studentDto.getCity();
-              studentRepository.save(student.get());
+              Optional<Student> optionalStudent= getStudent(id);
+              optionalStudent.get().setName(studentDto.getName());
+              optionalStudent.get().setEmail(studentDto.getEmail());
+              optionalStudent.get().setPhone(studentDto.getPhone());
+              optionalStudent.get().setCity(studentDto.getCity());
+              studentRepository.save(optionalStudent.get());
               return " update student ";
        }
 

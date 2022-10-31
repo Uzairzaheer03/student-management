@@ -23,8 +23,4 @@ public class StudentDto {
         this.city = city;
     }
 
-    public StudentDto() {
-
-    }
-
 }
