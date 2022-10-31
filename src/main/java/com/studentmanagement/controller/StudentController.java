@@ -66,4 +66,9 @@ public class StudentController{
         return studentService.getAllStudent(pageNumber, pageSize);
     }
 
+    @GetMapping("/getStudentByCity")
+     public Optional<Student> studentByCity(@RequestParam String city ){
+        return studentService.getStudentByCity(city);
+    }
+
 }

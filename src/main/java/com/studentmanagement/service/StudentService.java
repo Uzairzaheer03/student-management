@@ -54,7 +54,6 @@ public class StudentService {
               List<Student> students = new ArrayList<Student>();
               studentRepository.findAll().forEach(student -> students.add(student));;
               return students;
-
        }
 
 
@@ -69,5 +68,8 @@ public class StudentService {
        }
 
 
+       public Optional<Student> getStudentByCity(String city) {
 
+              return studentRepository.findByCity(city);
+       }
 }
