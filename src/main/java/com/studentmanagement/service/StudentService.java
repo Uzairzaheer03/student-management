@@ -67,7 +67,7 @@ public class StudentService {
        }
 
 
-       public Optional<Student> getStudentByCity(String city) {
+       public List<Student> getStudentByCity(String city) {
 
               return studentRepository.findByCity(city);
        }
