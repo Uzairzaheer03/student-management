@@ -67,7 +67,7 @@ public class StudentController{
     }
 
     @GetMapping("/getStudentByCity")
-     public Optional<Student> studentByCity(@RequestParam String city ){
+     public List<Student> studentByCity(@RequestParam String city ){
         return studentService.getStudentByCity(city);
     }
 
