@@ -14,7 +14,8 @@ import javax.validation.ConstraintViolationException;
 @ControllerAdvice
 public class ErrorHandlingControllerAdvice {
         @ResponseStatus(HttpStatus.BAD_REQUEST)
-        @ResponseBody        @ExceptionHandler(ConstraintViolationException.class)
+        @ResponseBody
+        @ExceptionHandler(ConstraintViolationException.class)
 
         ValidationErrorResponse onConstraintValidationException(
                 ConstraintViolationException e) {
