@@ -1,8 +1,7 @@
 package com.studentmanagement.domain;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,9 +27,10 @@ public class Student {
         this.phone=phone;
         this.city=city;
     }
-
     public Student() {
 
     }
+
+
 
 }

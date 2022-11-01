@@ -3,7 +3,6 @@ package com.studentmanagement.service;
 import com.studentmanagement.domain.Student;
 import com.studentmanagement.dto.StudentDto;
 import com.studentmanagement.repository.StudentRepository;
-import org.springframework.context.annotation.EnableMBeanExport;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -36,12 +35,16 @@ public class StudentService {
        public String updatedStudent(int id, StudentDto studentDto ) {
 
               Optional<Student> optionalStudent= getStudent(id);
-              optionalStudent.get().setName(studentDto.getName());
-              optionalStudent.get().setEmail(studentDto.getEmail());
-              optionalStudent.get().setPhone(studentDto.getPhone());
-              optionalStudent.get().setCity(studentDto.getCity());
-              studentRepository.save(optionalStudent.get());
-              return " update student ";
+              if(optionalStudent.isPresent()){
+                     optionalStudent.get().setName(studentDto.getName());
+                     optionalStudent.get().setEmail(studentDto.getEmail());
+                     optionalStudent.get().setPhone(studentDto.getPhone());
+                     optionalStudent.get().setCity(studentDto.getCity());
+                     studentRepository.save(optionalStudent.get());
+                     return " update student ";
+              }else{
+                     return "student not exist with id:"+id;
+              }
        }
 
 
@@ -51,20 +54,16 @@ public class StudentService {
        }
 
        public List<Student> getAllStudent() {
-              List<Student> students = new ArrayList<Student>();
-              studentRepository.findAll().forEach(student -> students.add(student));;
-              return students;
+              return new ArrayList<>(studentRepository.findAll());
        }
 
 
        public  Page<Student> getAllStudent(Integer pageNumber, Integer pageSize) {
 
               Pageable pageable = PageRequest.of(pageNumber, pageSize);
-              Page<Student> pageStudent = this.studentRepository.findAll(pageable);
-              List<Student> students = pageStudent.getContent();
 
 
-              return pageStudent;
+              return this.studentRepository.findAll(pageable);
        }
 
 
