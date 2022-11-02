@@ -35,31 +35,31 @@ public class StudentController{
 
     @PostMapping("/create")
     public String create(@RequestBody StudentDto studentDto) {
-        log.info("Request recieved for create studentDto");
+        log.info("Request recieved for create studentDto {}",studentDto);
         return studentService.createStudent(studentDto);
     }
 
     @GetMapping("/getByStudentId")
     public Optional<Student> getStudentById(@RequestParam int id){
-        log.info("Request recieved for get by student  id");
+        log.info("Request recieved for get by student  id {}",id);
         return studentService.getStudent(id);
     }
 
     @PutMapping("/update")
     public String update(@RequestParam int id, @RequestBody StudentDto studentDto){
-        log.info("Request recieved for update studentDto");
+        log.info("Request recieved for update studentDto {} for id {}", studentDto, id);
         return studentService.updatedStudent(id, studentDto);
     }
 
     @DeleteMapping("/delete")
     public String deleteStudent(@RequestParam int id){
-        log.info("Request recieved for delete student by id");
+        log.info("Request recieved for delete student by id {}",id);
         return studentService.deleteStudent(id);
     }
 
     @GetMapping("/students")
     public List<Student> getAllStudent(){
-        log.info("Request recieved for students");
+        log.info("Request recieved for get all student {}" );
         return studentService.getAllStudent();
     }
 
@@ -68,13 +68,13 @@ public class StudentController{
             @RequestParam(value = "pageNumber", defaultValue = "0", required = false) Integer pageNumber,
             @RequestParam(value= "pageSize", defaultValue  = "3", required = false) Integer pageSize
     ){
-        log.info("Request recieved for student by page");
+        log.info("Request recieved for student by pageNumber {} for pageSize {} ", pageNumber, pageSize);
         return studentService.getAllStudent(pageNumber, pageSize);
     }
 
     @GetMapping("/getStudentByCity")
      public List<Student> studentByCity(@RequestParam String city ){
-        log.info("Request recieved for get student by city");
+        log.info("Request recieved for get student by city {}",city);
         return studentService.getStudentByCity(city);
     }
 

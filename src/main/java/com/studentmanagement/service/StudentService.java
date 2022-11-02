@@ -26,12 +26,12 @@ public class StudentService {
        public String createStudent(StudentDto studentDto){
               Student student = new Student(studentDto.getName(),studentDto.getEmail(),studentDto.getPhone(),studentDto.getCity());
               studentRepository.save(student);
-              log.info("saved student{}",student);
+              log.info("saved student {}",student);
               return " saved student";
        }
 
        public Optional<Student> getStudent(int id) {
-              log.info("get student{}",id);
+              log.info("find by Id {}",id);
               return studentRepository.findById(id);
        }
 
@@ -44,7 +44,7 @@ public class StudentService {
                      optionalStudent.get().setPhone(studentDto.getPhone());
                      optionalStudent.get().setCity(studentDto.getCity());
                      studentRepository.save(optionalStudent.get());
-                     log.info("update student{}",studentDto);
+                     log.info("update studentDto {} id {}",studentDto, id);
                      return " update student ";
               }else{
                      return "student not exist with id:"+id;
@@ -54,12 +54,12 @@ public class StudentService {
 
        public String deleteStudent(int id) {
               studentRepository.deleteById(id);
-              log.info("delete student{}",id);
+              log.info("delete student {}",id);
               return " delete student";
        }
 
        public List<Student> getAllStudent() {
-              log.info("find all student{}");
+              log.info("find all {}" );
               return new ArrayList<>(studentRepository.findAll());
        }
 
@@ -67,13 +67,13 @@ public class StudentService {
        public  Page<Student> getAllStudent(Integer pageNumber, Integer pageSize) {
 
               Pageable pageable = PageRequest.of(pageNumber, pageSize);
-              log.info("findAll{}",pageable);
+              log.info("find all pageable {}",pageable);
               return this.studentRepository.findAll(pageable);
        }
 
 
        public List<Student> getStudentByCity(String city) {
-              log.info("findByCity{}",city);
+              log.info("find by city {}",city);
               return studentRepository.findByCity(city);
        }
 }
