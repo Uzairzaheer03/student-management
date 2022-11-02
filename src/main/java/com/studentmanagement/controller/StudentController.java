@@ -41,7 +41,7 @@ public class StudentController{
 
     @GetMapping("/getByStudentId")
     public Optional<Student> getStudentById(@RequestParam int id){
-        log.info("Request recieved for student id");
+        log.info("Request recieved for get by student  id");
         return studentService.getStudent(id);
     }
 
@@ -59,7 +59,7 @@ public class StudentController{
 
     @GetMapping("/students")
     public List<Student> getAllStudent(){
-        log.info("Request recieved for get all student");
+        log.info("Request recieved for students");
         return studentService.getAllStudent();
     }
 
