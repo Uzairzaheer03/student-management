@@ -53,13 +53,13 @@ public class StudentController{
 
     @DeleteMapping("/delete")
     public String deleteStudent(@RequestParam int id){
-        log.info("Request recieved for deleteStudent");
+        log.info("Request recieved for delete student by id");
         return studentService.deleteStudent(id);
     }
 
     @GetMapping("/students")
     public List<Student> getAllStudent(){
-        log.info("Request recieved for getAllStudent");
+        log.info("Request recieved for get all student");
         return studentService.getAllStudent();
     }
 
@@ -68,13 +68,13 @@ public class StudentController{
             @RequestParam(value = "pageNumber", defaultValue = "0", required = false) Integer pageNumber,
             @RequestParam(value= "pageSize", defaultValue  = "3", required = false) Integer pageSize
     ){
-        log.info("Request recieved for studentByPage");
+        log.info("Request recieved for student by page");
         return studentService.getAllStudent(pageNumber, pageSize);
     }
 
     @GetMapping("/getStudentByCity")
      public List<Student> studentByCity(@RequestParam String city ){
-        log.info("Request recieved for getStudentByCity");
+        log.info("Request recieved for get student by city");
         return studentService.getStudentByCity(city);
     }
 

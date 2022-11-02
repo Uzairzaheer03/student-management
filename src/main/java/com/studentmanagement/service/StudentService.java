@@ -54,12 +54,12 @@ public class StudentService {
 
        public String deleteStudent(int id) {
               studentRepository.deleteById(id);
-              log.info("delete student",id);
+              log.info("delete student{}",id);
               return " delete student";
        }
 
        public List<Student> getAllStudent() {
-              log.info("findAll{}"  );
+              log.info("find all student{}");
               return new ArrayList<>(studentRepository.findAll());
        }
 
