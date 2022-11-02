@@ -59,7 +59,7 @@ public class StudentService {
        }
 
        public List<Student> getAllStudent() {
-              log.info("find all {}" );
+              log.info("find all {}");
               return new ArrayList<>(studentRepository.findAll());
        }
 

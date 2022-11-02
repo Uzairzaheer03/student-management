@@ -59,7 +59,7 @@ public class StudentController{
 
     @GetMapping("/students")
     public List<Student> getAllStudent(){
-        log.info("Request recieved for get all student {}" );
+        log.info("Request recieved for all students {}");
         return studentService.getAllStudent();
     }
 

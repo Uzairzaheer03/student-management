@@ -1,6 +1,6 @@
 <configuration scan="true">
     
-    <property name="student-management-service" value="account-management-service" />
+    <property name="student-management-service" value="student-management-service" />
     <!-- CONSOLE -->
     <appender name="CONSOLE"
               class="ch.qos.logback.core.ConsoleAppender">
